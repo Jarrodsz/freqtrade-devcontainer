@@ -1,0 +1,14 @@
+{
+  "exchange": {
+    "name": "kucoin",
+    "key": "",
+    "secret": ""
+  },
+  "add_config_files": [
+    "/freqtrade/user_data/config/pairlist/static.json",
+    "/freqtrade/user_data/config/includes/pricing.json",
+    "/freqtrade/user_data/config/exchange/kucoin/pairlist.json",
+    "/freqtrade/user_data/config/exchange/kucoin/blacklist.json",
+    "/freqtrade/user_data/config/includes/frequi.json"
+  ]
+}

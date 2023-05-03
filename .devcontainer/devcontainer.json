@@ -1,0 +1,18 @@
+{
+  "name": "Freqtrade development container",
+  "build": {
+    "context": "..",
+    "dockerfile": "Dockerfile"
+  },
+  "mounts": [
+    "source=./user_data,target=/freqtrade/user_data,type=bind",
+    "source=./cli,target=/freqtrade/cli,type=bind"
+  ],
+  "runArgs": [
+    "--name=freqtrade"
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "postStartCommand": "/freqtrade/cli/binance-proxy --disable-fake-candles"
+}

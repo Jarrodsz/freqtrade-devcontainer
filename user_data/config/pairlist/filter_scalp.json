@@ -1,0 +1,29 @@
+{
+  "pairlists": [
+    {
+      "method": "AgeFilter",
+      "min_days_listed": 1
+    },
+    {
+      "method": "PriceFilter",
+      "low_price_ratio": 0.005
+    },
+    {
+      "method": "SpreadFilter",
+      "max_spread_ratio": 0.002
+    },
+    {
+      "method": "RangeStabilityFilter",
+      "lookback_days": 3,
+      "min_rate_of_change": 0.02,
+      "refresh_period": 1800
+    },
+    {
+      "method": "VolatilityFilter",
+      "lookback_days": 1,
+      "min_volatility": 0.05,
+      "max_volatility": 1.0,
+      "refresh_period": 60
+    }
+  ]
+}

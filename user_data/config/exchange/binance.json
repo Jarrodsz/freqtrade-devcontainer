@@ -1,0 +1,27 @@
+{
+  "exchange": {
+    "name": "binance",
+    "key": "x",
+    "secret": "y",
+    "ccxt_config": {
+      "enableRateLimit": true,
+      "rateLimit": 195,
+      "urls": {
+        "api": {
+          "public": "http://127.0.0.1:8090/api/v3"
+        }
+      }
+    },
+    "ccxt_async_config": {
+      "enableRateLimit": true,
+      "rateLimit": 195
+    }
+  },
+  "add_config_files": [
+    "/freqtrade/user_data/config/pairlist/static.json",
+    "/freqtrade/user_data/config/includes/pricing.json",
+    "/freqtrade/user_data/config/exchange/binance/pairlist.json",
+    "/freqtrade/user_data/config/exchange/binance/blacklist.json",
+    "/freqtrade/user_data/config/includes/frequi.json"
+  ]
+}
