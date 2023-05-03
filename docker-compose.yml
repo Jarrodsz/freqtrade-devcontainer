@@ -10,6 +10,8 @@ services:
       - "8091:8091"
 
   # BASE CONTAINER
+  # FOR LOCAL DEV CAN ACCEPT MULTIPLE
+  # STRATS IN A SINGLE CONTAINER
   freqtrade:
     environment:
       SLEEP: "0"
@@ -17,7 +19,7 @@ services:
       context: .
       dockerfile: ./docker/Dockerfile
     restart: unless-stopped
-    container_name: freqtrade
+    container_name: freqtrade_binance1
     volumes:
       - "./user_data:/freqtrade/user_data"
     ports:
@@ -70,4 +72,35 @@ services:
     command: >
       freqtrade webserver
       --config /freqtrade/user_data/config/default.json      
-      --config /freqtrade/user_data/config/exchange/binance.json      
+      --config /freqtrade/user_data/config/exchange/binance.json
+      --logfile /freqtrade/user_data/logs/freqtrade.log
+      --strategy $b0_strategy
+
+
+
+
+  # PRODUCTION CONTAINERS
+  # FOR RUNNING A SINGLE STRATEGY
+  # IN A SINGLE CONTAINER
+  freqtrade_binance1:
+    environment:
+      SLEEP: "0"
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    restart: unless-stopped
+    container_name: freqtrade_binance1
+    volumes:
+      - "./user_data:/freqtrade/user_data"
+    ports:
+      - "8080:8080"
+    links:
+      - "binance_proxy_nightshift2k"
+    depends_on:
+      - "binance_proxy_nightshift2k"
+    command: >
+      freqtrade webserver
+      --config /freqtrade/user_data/config/default.json      
+      --config /freqtrade/user_data/config/exchange/binance.json
+      --logfile /freqtrade/user_data/logs/freqtrade.log
+      --strategy $b0_strategy
